@@ -1,5 +1,8 @@
 package com.gmail.takashi316.lib;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,12 +10,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.gmail.matsushige.LogActivity;
-import com.gmail.matsushige.NFC1Activity;
-import com.gmail.matsushige.R;
-import com.gmail.matsushige.UsersActivity;
-
 public class MenuActivity extends Activity {
+
+	private Map<Integer, Class<Activity>> activityMap;
+	private int exitItemId = -1;
+	private int menuResourceId = -1;
+
+	public MenuActivity() {
+		super();
+		this.activityMap = new HashMap<Integer, Class<Activity>>(5);
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -22,35 +30,40 @@ public class MenuActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
+		if (this.menuResourceId == -1)
+			return false;
 		MenuInflater menu_inflater = getMenuInflater();
-		menu_inflater.inflate(R.menu.menu, menu);
+		menu_inflater.inflate(this.menuResourceId, menu);
 		return true;
 	}// onCreateOptionsMenu
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == R.id.itemExit) {
+		Class<Activity> activity_class = this.activityMap.get(item.getItemId());
+		if (activity_class != null) {
+			Intent intent = new Intent(this, activity_class);
+			startActivityForResult(intent, 0);
+			return true;
+		}
+		if (item.getItemId() == this.exitItemId) {
 			Intent intent = new Intent();
 			intent.putExtra("text", "終了");
 			setResult(RESULT_OK);
 			finish();
 			return true;
 		}
-		if (item.getItemId() == R.id.itemUsers) {
-			Intent intent = new Intent(this, UsersActivity.class);
-			startActivityForResult(intent, 0);
-			return true;
-		}
-		if (item.getItemId() == R.id.itemMain) {
-			Intent intent = new Intent(this, NFC1Activity.class);
-			startActivityForResult(intent, 0);
-			return true;
-		}
-		if (item.getItemId() == R.id.itemLog) {
-			Intent intent = new Intent(this, LogActivity.class);
-			startActivityForResult(intent, 0);
-			return true;
-		}
 		return super.onOptionsItemSelected(item);
-	}
+	}// onOptionsItemSelected
+
+	protected void addActivityClass(Integer item_id, Class<Activity> activity_) {
+		this.activityMap.put(item_id, activity_);
+	}// addActivityClass
+
+	protected void setExitItemId(int exit_item_id) {
+		this.exitItemId = exit_item_id;
+	}// setExitItemId
+
+	protected void setMenuResourceId(int menu_resource_id) {
+		this.menuResourceId = menu_resource_id;
+	} // setMenuResourceId
 }// MenuActivity
