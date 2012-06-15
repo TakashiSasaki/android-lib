@@ -12,13 +12,13 @@ import android.view.MenuItem;
 
 public class MenuActivity extends Activity {
 
-	private Map<Integer, Class<Activity>> activityMap;
+	private Map<Integer, Class<? extends Activity>> activityMap;
 	private int exitItemId = -1;
 	private int menuResourceId = -1;
 
 	public MenuActivity() {
 		super();
-		this.activityMap = new HashMap<Integer, Class<Activity>>(5);
+		this.activityMap = new HashMap<Integer, Class<? extends Activity>>(5);
 	}
 
 	@Override
@@ -30,7 +30,8 @@ public class MenuActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		if (this.menuResourceId == -1)
-			return false;
+			throw new RuntimeException(
+					"MenuActivity#setMenuResourceId should be called before");
 		MenuInflater menu_inflater = getMenuInflater();
 		menu_inflater.inflate(this.menuResourceId, menu);
 		return true;
@@ -39,7 +40,8 @@ public class MenuActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		@SuppressWarnings("boxing")
-		Class<Activity> activity_class = this.activityMap.get(item.getItemId());
+		Class<? extends Activity> activity_class = this.activityMap.get(item
+				.getItemId());
 		if (activity_class != null) {
 			Intent intent = new Intent(this, activity_class);
 			startActivityForResult(intent, 0);
@@ -55,7 +57,8 @@ public class MenuActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}// onOptionsItemSelected
 
-	protected void addActivityClass(Integer item_id, Class<Activity> activity_) {
+	protected void addActivityClass(Integer item_id,
+			Class<? extends Activity> activity_) {
 		this.activityMap.put(item_id, activity_);
 	}// addActivityClass
 
