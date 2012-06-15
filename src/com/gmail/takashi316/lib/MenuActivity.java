@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class MenuActivity extends Activity {
+class MenuActivity extends Activity {
 
 	private Map<Integer, Class<? extends Activity>> activityMap;
 	private int exitItemId = -1;
