@@ -1,19 +1,16 @@
 package com.gmail.takashi316.lib;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
 import com.gmail.matsushige.LogActivity;
 import com.gmail.matsushige.NFC1Activity;
 import com.gmail.matsushige.R;
 import com.gmail.matsushige.UsersActivity;
-import com.gmail.matsushige.R.id;
-import com.gmail.matsushige.R.menu;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
 public class MenuActivity extends Activity {
 	@Override
