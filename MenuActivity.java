@@ -23,7 +23,6 @@ public class MenuActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}// onCreate
 
@@ -39,6 +38,7 @@ public class MenuActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		@SuppressWarnings("boxing")
 		Class<Activity> activity_class = this.activityMap.get(item.getItemId());
 		if (activity_class != null) {
 			Intent intent = new Intent(this, activity_class);
