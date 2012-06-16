@@ -1,4 +1,4 @@
-package com.gmail.takashi316.lib;
+package com.gmail.takashi316.lib.android.activity;
 
 import android.os.Bundle;
 
