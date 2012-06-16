@@ -1,10 +1,13 @@
-package com.gmail.takashi316.lib;
+package com.gmail.takashi316.lib.android.activity;
+
+import com.gmail.matsushige.R;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 class FragmentActivity extends MenuActivity {
 
@@ -16,19 +19,26 @@ class FragmentActivity extends MenuActivity {
 		this.activityLayoutId = activity_layout_id;
 	}// setActivityLayoutId
 
-	protected void setFragmentContainer(int fragment_container_id,
-			Class<? extends Fragment> fragment_class) {
+	protected void setFragmentContainer(int fragment_container_id) {
 		this.fragmentContainerId = fragment_container_id;
+	}// setFragmentContainer
+
+	protected void setFragmentClass(Class<? extends Fragment> fragment_class) {
 		this.fragmentClass = fragment_class;
-	}// setFragment
+	}// setFragmentClass
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		View view;
 		if (this.activityLayoutId == -1) {
-			throw new RuntimeException(
-					"BasicActivity#onCreate failed without setting BasicActivity#activityLayoutId");
-		}
-		View view = getLayoutInflater().inflate(this.activityLayoutId, null);
+			LinearLayout linear_layout = new LinearLayout(this);
+			linear_layout.setOrientation(LinearLayout.VERTICAL);
+			linear_layout.setId(this.hashCode());
+			this.fragmentContainerId = linear_layout.getId();
+			view = linear_layout;
+		} else {
+			view = getLayoutInflater().inflate(this.activityLayoutId, null);
+		}// if
 		if (this.fragmentContainerId != -1 && this.fragmentClass != null) {
 			FragmentManager fragment_manager = getFragmentManager();
 			FragmentTransaction fragment_transaction = fragment_manager
@@ -47,7 +57,7 @@ class FragmentActivity extends MenuActivity {
 		setContentView(view);
 		super.onCreate(savedInstanceState);
 	}// onCreate
-	
+
 	@Override
 	protected void onRestart() {
 		// TODO Auto-generated method stub

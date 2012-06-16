@@ -1,4 +1,4 @@
-package com.gmail.takashi316.lib;
+package com.gmail.takashi316.lib.android.activity;
 
 import android.view.View;
 import android.widget.Button;
@@ -16,9 +16,4 @@ class FindViewActivity extends FragmentActivity {
 		return (Button) view;
 	}// button
 	
-	@Override
-	protected void onRestart() {
-		// TODO Auto-generated method stub
-		super.onRestart();
-	}
 }// FindViewActivity
