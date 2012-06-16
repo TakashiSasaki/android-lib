@@ -69,4 +69,10 @@ class MenuActivity extends Activity {
 	protected void setMenuResourceId(int menu_resource_id) {
 		this.menuResourceId = menu_resource_id;
 	} // setMenuResourceId
+	
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+	}
 }// MenuActivity

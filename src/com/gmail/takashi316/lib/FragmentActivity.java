@@ -6,7 +6,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 
-public class FragmentActivity extends MenuActivity {
+class FragmentActivity extends MenuActivity {
 
 	private int activityLayoutId = -1;
 	private int fragmentContainerId = -1;
@@ -47,4 +47,10 @@ public class FragmentActivity extends MenuActivity {
 		setContentView(view);
 		super.onCreate(savedInstanceState);
 	}// onCreate
-}// BasicActivity
+	
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+	}
+}// FragmentActivity

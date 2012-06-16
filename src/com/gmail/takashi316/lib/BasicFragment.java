@@ -47,4 +47,10 @@ public class BasicFragment extends Fragment {
 		button.setOnClickListener(on_click_listener);
 	}
 	
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+	
 }// BasicFragment
