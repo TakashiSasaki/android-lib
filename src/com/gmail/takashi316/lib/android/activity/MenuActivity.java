@@ -49,7 +49,7 @@ class MenuActivity extends Activity {
 		}
 		if (item.getItemId() == this.exitItemId) {
 			Intent intent = new Intent();
-			intent.putExtra("text", "終了");
+			intent.putExtra("text", "Exit");
 			setResult(RESULT_OK);
 			finish();
 			return true;
@@ -69,7 +69,7 @@ class MenuActivity extends Activity {
 	protected void setMenuResourceId(int menu_resource_id) {
 		this.menuResourceId = menu_resource_id;
 	} // setMenuResourceId
-	
+
 	@Override
 	protected void onRestart() {
 		// TODO Auto-generated method stub

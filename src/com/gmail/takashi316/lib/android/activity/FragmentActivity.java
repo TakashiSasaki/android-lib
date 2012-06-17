@@ -1,7 +1,5 @@
 package com.gmail.takashi316.lib.android.activity;
 
-import com.gmail.matsushige.R;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;

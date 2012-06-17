@@ -1,4 +1,4 @@
-package com.gmail.takashi316.lib.android.activity;
+package com.gmail.takashi316.lib.android.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
