@@ -1,7 +1,7 @@
 package com.gmail.takashi316.lib.android.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,17 +40,18 @@ public class BasicFragment extends Fragment {
 	protected void setFragmentLayoutId(int fragment_layout_id) {
 		this.fragmentLayoutId = fragment_layout_id;
 	}// setFragmentLayoutId
-	
-	protected void setButtonOnClickListener(int button_id, OnClickListener on_click_listener){
+
+	protected void setButtonOnClickListener(int button_id,
+			OnClickListener on_click_listener) {
 		assert this.view != null;
-		Button button = (Button)this.view.findViewById(button_id);
+		Button button = (Button) this.view.findViewById(button_id);
 		button.setOnClickListener(on_click_listener);
 	}
-	
+
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 	}
-	
+
 }// BasicFragment
