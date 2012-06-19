@@ -6,11 +6,13 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-class MenuActivity extends Activity {
+class MenuActivity extends FragmentActivity {
 
 	private Map<Integer, Class<? extends Activity>> activityMap;
 	private int exitItemId = -1;
@@ -74,5 +76,11 @@ class MenuActivity extends Activity {
 	protected void onRestart() {
 		// TODO Auto-generated method stub
 		super.onRestart();
+	}
+	
+	@Override
+	public FragmentManager getSupportFragmentManager() {
+		// TODO Auto-generated method stub
+		return super.getSupportFragmentManager();
 	}
 }// MenuActivity
