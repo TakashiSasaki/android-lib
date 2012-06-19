@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-class FindViewActivity extends FragmentActivity {
+class FindViewActivity extends FragmentsActivity {
 
 	public TextView textView(int view_id) {
 		View view = findViewById(view_id);

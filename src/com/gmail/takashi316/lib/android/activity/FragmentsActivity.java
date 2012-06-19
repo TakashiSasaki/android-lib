@@ -1,13 +1,16 @@
 package com.gmail.takashi316.lib.android.activity;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+//import android.app.Fragment;
+//import android.app.FragmentManager;
+//import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.LinearLayout;
 
-class FragmentActivity extends MenuActivity {
+class FragmentsActivity extends MenuActivity {
 
 	private int activityLayoutId = -1;
 	private int fragmentContainerId = -1;
@@ -38,7 +41,8 @@ class FragmentActivity extends MenuActivity {
 			view = getLayoutInflater().inflate(this.activityLayoutId, null);
 		}// if
 		if (this.fragmentContainerId != -1 && this.fragmentClass != null) {
-			FragmentManager fragment_manager = getFragmentManager();
+			// FragmentManager fragment_manager = getFragmentManager();
+			FragmentManager fragment_manager = this.getSupportFragmentManager();
 			FragmentTransaction fragment_transaction = fragment_manager
 					.beginTransaction();
 			try {
