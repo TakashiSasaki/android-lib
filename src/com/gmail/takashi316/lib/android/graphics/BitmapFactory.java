@@ -11,6 +11,7 @@ public class BitmapFactory extends android.graphics.BitmapFactory {
 	private Bitmap bitmap;
 
 	public void loadResource(Context context, int drawable_id) {
+		recycle();
 		Resources resources = context.getResources();
 		Options options = new Options();
 		options.inPurgeable = true;
@@ -30,13 +31,20 @@ public class BitmapFactory extends android.graphics.BitmapFactory {
 	}// recyecle
 
 	public void loadFile(File file_) {
+		recycle();
 		Options options = new Options();
 		options.inPurgeable = true;
 		options.inPreferredConfig = Bitmap.Config.RGB_565;
 		this.bitmap = decodeFile(file_.getPath(), options);
 	}// loadFile
+	
+	public void loadBitmap(Bitmap bitmap_){
+		recycle();
+		this.bitmap = bitmap_;
+	}// loadBitmap
 
 	public void resize(int width, int height) {
+		recycle();
 		final int original_height = this.bitmap.getHeight();
 		final int original_width = this.bitmap.getWidth();
 		final float height_scale = height / (float) original_height;
