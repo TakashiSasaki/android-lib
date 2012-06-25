@@ -24,7 +24,7 @@ public abstract class SimpleCursorLoader extends AsyncTaskLoader<Cursor> {
 
 	public SimpleCursorLoader(Context context) {
 		super(context);
-	}
+	}// the constructor
 
 	/* Runs on a worker thread */
 	@Override
