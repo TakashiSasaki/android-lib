@@ -1,5 +1,6 @@
 package com.gmail.takashi316.lib.android.filesystem;
 
+import java.io.File;
 import java.io.IOException;
 import android.graphics.Bitmap;
 import com.gmail.takashi316.lib.android.graphics.BitmapFactory;
@@ -17,6 +18,10 @@ public class AndroidImageFile extends ImageFile<Bitmap> {
 	@SuppressWarnings("javadoc")
 	public AndroidImageFile(String pathname) throws IOException {
 		super(pathname);
+	}// a constructor
+
+	public AndroidImageFile(File parent, String child) throws IOException {
+		super(parent, child);
 	}// a constructor
 
 	@Override
