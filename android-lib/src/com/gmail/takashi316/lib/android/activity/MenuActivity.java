@@ -77,7 +77,7 @@ class MenuActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 		super.onRestart();
 	}
-	
+
 	@Override
 	public FragmentManager getSupportFragmentManager() {
 		// TODO Auto-generated method stub
