@@ -2,22 +2,20 @@ package com.gmail.takashi316.lib.android.test;
 
 import com.gmail.takashi316.lib.android.filesystem.AndroidDirectory;
 import com.gmail.takashi316.lib.android.stub.HelloAndroidActivity;
-import com.gmail.takashi316.lib.android.stub.R;
-import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.Log;
-import android.widget.TextView;
 
 /**
- * @author Takashi SASAKI {@link "http://twitter.com/TakashiSasaki"}
+ * @author Takashi SASAKI <a href="http://twitter.com/TakashiSasaki"/>
  */
 public class AndroidDirectoryTestCase extends
 		ActivityInstrumentationTestCase2<HelloAndroidActivity> {
 
+	@SuppressWarnings("javadoc")
 	public AndroidDirectoryTestCase() {
 		super(HelloAndroidActivity.class);
 	}// HelloAndroidTestCase
 
+	@SuppressWarnings("javadoc")
 	public void testExternalDir() {
 		assertTrue(doesThrowNullPointerException(new Runnable() {
 			@Override
@@ -81,6 +79,7 @@ public class AndroidDirectoryTestCase extends
 		}));
 	}
 
+	@SuppressWarnings("javadoc")
 	public void testPublicDir() {
 		assertTrue(doesThrowNothing(new Runnable() {
 			@Override
@@ -140,6 +139,7 @@ public class AndroidDirectoryTestCase extends
 		}));
 	}
 
+	@SuppressWarnings("javadoc")
 	public void testExternalStorage() {
 		assertTrue(doesThrowNothing(new Runnable() {
 			@Override

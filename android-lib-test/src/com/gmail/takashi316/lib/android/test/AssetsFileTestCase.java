@@ -6,16 +6,12 @@ import com.gmail.takashi316.lib.android.assets.AssetFile;
 import com.gmail.takashi316.lib.android.filesystem.AndroidDirectory;
 import com.gmail.takashi316.lib.android.filesystem.AndroidImageFile;
 import com.gmail.takashi316.lib.android.stub.HelloAndroidActivity;
-import com.gmail.takashi316.lib.android.stub.R;
-import com.gmail.takashi316.lib.filesystem.Directory;
 import com.gmail.takashi316.lib.filesystem.File;
 
-import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.Log;
-import android.widget.TextView;
 
 /**
+ * 
  * @author Takashi SASAKI {@link "http://twitter.com/TakashiSasaki"}
  */
 public class AssetsFileTestCase extends
@@ -24,10 +20,16 @@ public class AssetsFileTestCase extends
 	AndroidDirectory filesDir;
 	File fileLena;
 
+	@SuppressWarnings("javadoc")
 	public AssetsFileTestCase() {
 		super(HelloAndroidActivity.class);
 	}// HelloAndroidTestCase
 
+	/**
+	 * testing copy function and AndroidImageFile class.
+	 * 
+	 * @throws IOException
+	 */
 	public void testCopy() throws IOException {
 		assertFalse(this.fileLena.exists());
 		this.fileLena.copyFrom(this.assetFileLena.getBufferedInputStream());
