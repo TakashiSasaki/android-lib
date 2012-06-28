@@ -14,14 +14,14 @@ import android.test.ActivityInstrumentationTestCase2;
  * 
  * @author Takashi SASAKI {@link "http://twitter.com/TakashiSasaki"}
  */
-public class AssetsFileTestCase extends
+public class AssetFileTestCase extends
 		ActivityInstrumentationTestCase2<HelloAndroidActivity> {
 	AssetFile assetFileLena;
 	AndroidDirectory filesDir;
 	File fileLena;
 
 	@SuppressWarnings("javadoc")
-	public AssetsFileTestCase() {
+	public AssetFileTestCase() {
 		super(HelloAndroidActivity.class);
 	}// HelloAndroidTestCase
 
