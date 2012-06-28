@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 public class AssetFile {
-	AssetManager assetManager;
+	// AssetManager assetManager;
 	String path;
 	Context context;
 
@@ -25,7 +25,7 @@ public class AssetFile {
 
 	public BufferedInputStream getBufferedInputStream() throws IOException {
 		AssetManager am = this.context.getAssets();
-		return new BufferedInputStream(this.assetManager.open(this.path));
+		return new BufferedInputStream(am.open(this.path));
 	}// getBufferedInputStream()
 
 	public String getPath() {

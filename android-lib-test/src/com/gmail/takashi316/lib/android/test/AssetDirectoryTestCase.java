@@ -8,7 +8,6 @@ import com.gmail.takashi316.lib.android.assets.AssetFile;
 import com.gmail.takashi316.lib.android.filesystem.AndroidDirectory;
 import com.gmail.takashi316.lib.android.stub.HelloAndroidActivity;
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.Log;
 
 /**
  * 
