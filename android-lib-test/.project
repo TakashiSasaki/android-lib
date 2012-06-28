@@ -3,6 +3,8 @@
 	<name>android-lib-test</name>
 	<comment></comment>
 	<projects>
+		<project>android-lib</project>
+		<project>java-lib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
