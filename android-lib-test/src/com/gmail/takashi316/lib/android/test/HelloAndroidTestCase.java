@@ -1,12 +1,11 @@
 package com.gmail.takashi316.lib.android.test;
 
+import com.gmail.takashi316.lib.android.stub.HelloAndroidActivity;
+import com.gmail.takashi316.lib.android.stub.R;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.widget.TextView;
-import com.gmail.takashi316.sandbox.R;
-
-import com.gmail.takashi316.sandbox.HelloAndroidActivity;
 
 /**
  * @author Takashi SASAKI {@link "http://twitter.com/TakashiSasaki"}
@@ -27,7 +26,8 @@ public class HelloAndroidTestCase extends
 			}
 		});// runOnUiThread
 		Log.v("testTextViewHello", (String) this.textView.getText());
-		assertEquals(this.textView.getText(), "Hello World, HelloAndroidActivity!");
+		assertEquals(this.textView.getText(),
+				"Hello World, HelloAndroidActivity!");
 	}// testTextViewHello
 
 	Activity activity;
