@@ -3,6 +3,8 @@ package com.gmail.takashi316.lib.android.activity;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.gmail.takashi316.lib.android.log.Log;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +17,7 @@ import android.view.MenuItem;
 class MenuActivity extends FragmentActivity {
 
 	private Map<Integer, Class<? extends Activity>> activityMap;
-	private int exitItemId = -1;
+	// private int exitItemId = -1;
 	private int menuResourceId = -1;
 
 	public MenuActivity() {
@@ -27,6 +29,18 @@ class MenuActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}// onCreate
+
+	@Override
+	protected void onStart() {
+		if (this.menuResourceId == -1) {
+			Log.e(new Exception(
+					"setMenuResourceId should be called in onCreate."));
+		}// if
+		if (this.activityMap.size() == 0) {
+			Log.e(new Exception("No activity is mapped to any menu item."));
+		}// if
+		super.onStart();
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,13 +63,11 @@ class MenuActivity extends FragmentActivity {
 			startActivityForResult(intent, 0);
 			return true;
 		}
-		if (item.getItemId() == this.exitItemId) {
-			Intent intent = new Intent();
-			intent.putExtra("text", "Exit");
-			setResult(RESULT_OK);
-			finish();
-			return true;
-		}
+		Intent intent = new Intent();
+		intent.putExtra("text", "Exit");
+		setResult(RESULT_OK);
+		finish();
+		// return true;
 		return super.onOptionsItemSelected(item);
 	}// onOptionsItemSelected
 
@@ -64,9 +76,9 @@ class MenuActivity extends FragmentActivity {
 		this.activityMap.put(item_id, activity_);
 	}// addActivityClass
 
-	protected void setExitItemId(int exit_item_id) {
-		this.exitItemId = exit_item_id;
-	}// setExitItemId
+	// protected void setExitItemId(int exit_item_id) {
+	// this.exitItemId = exit_item_id;
+	// }// setExitItemId
 
 	protected void setMenuResourceId(int menu_resource_id) {
 		this.menuResourceId = menu_resource_id;
