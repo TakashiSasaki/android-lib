@@ -22,7 +22,7 @@ class MenuActivity extends FragmentActivity {
 
 	public MenuActivity() {
 		super();
-		this.activityMap = new HashMap<Integer, Class<? extends Activity>>(5);
+		this.activityMap = new HashMap<Integer, Class<? extends Activity>>();
 	}
 
 	@Override
