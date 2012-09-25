@@ -11,6 +11,7 @@ tmp/
 *.swp
 *~.nib
 android-lib-test/gen/
+.picasa.ini
 
 # External tool builders
 .externalToolBuilders/
