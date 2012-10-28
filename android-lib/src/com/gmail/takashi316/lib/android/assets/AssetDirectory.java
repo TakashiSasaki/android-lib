@@ -8,39 +8,79 @@ import java.util.regex.Pattern;
 import android.content.Context;
 import android.content.res.AssetManager;
 
-public class AssetDirectory {
-	String path;
-	Context context;
+/**
+ * ZipFilesInAssets represents ZIP files in assets folder. Once zip files are
+ * enumerated, it is represented as instances of ZipUrl.
+ * 
+ * @author Takashi SASAKI {@link "http://twitter.com/TakashiSasaki"}
+ */
+@SuppressWarnings("serial")
+public class AssetDirectory extends ArrayList<AssetFile> {
+	// private static final String zipAssetDirectory = "zip";
+	// private AssetManager assetManager;
+	static Context context;
 
-	public AssetDirectory(Context context_, String path) {
-		this.context = context_;
-		this.path = path;
-	}// a constructor for specific assets path
+	public static Context getContext() {
+		if (context == null)
+			throw new NullPointerException("context is not set");
+		return context;
+	}
 
-	public AssetDirectory(Context context_) {
-		this.context = context_;
-		this.path = "";
-	}// a constructor for assets root
+	public static AssetManager getAssetManager() {
+		if (assetManager == null)
+			throw new NullPointerException("assetManager is not set");
+		return assetManager;
+	}
 
-	public ArrayList<AssetFile> list() throws IOException {
-		return list(null);
-	}// list
+	public String getPathInAssets() {
+		assert (pathInAssets != null);
+		return this.pathInAssets;
+	}
 
-	public ArrayList<AssetFile> list(Pattern pattern) throws IOException {
-		ArrayList<AssetFile> results = new ArrayList<AssetFile>();
-		AssetManager am = this.context.getAssets();
-		String[] children = am.list(this.path);
-		for (String c : children) {
-			if (pattern != null) {
-				Matcher m = pattern.matcher(c);
-				if (!m.find()) {
-					continue;
-				}
-			}
-			results.add(new AssetFile(this.context, this.path, c));
+	static AssetManager assetManager;
+	String pathInAssets;
+	Pattern pattern;
+
+	public void setContext(Context context) {
+		if (context == null) {
+			assert (AssetFile.context != null);
+			return;
+		}
+		if (AssetDirectory.context == null) {
+			AssetDirectory.context = context;
+			return;
+		}
+		assert (AssetDirectory.context.equals(context));
+	}// setContext
+
+	void prepareAssetManager() {
+		assetManager = context.getResources().getAssets();
+	}
+
+	public AssetDirectory(String path_in_asset, String regex)
+			throws IOException {
+		setContext(context);
+		prepareAssetManager();
+		// this.clear();
+		pattern = Pattern.compile(regex /* "^[^.][a-zA-Z_0-9.-]+[^.].zip$" */);
+		String[] asset_paths;
+
+		asset_paths = assetManager.list("");
+
+		for (String asset_path : asset_paths) {
+			Matcher matcher = pattern.matcher(asset_path);
+			if (!matcher.find())
+				continue;
+			// URI uri;
+			// try {
+			// uri = new URI("file", null, "assets", -1, "/" + asset_path,
+			// null, null);
+			// } catch (URISyntaxException e) {
+			// e.printStackTrace();
+			// continue;
+			// }// try
+			this.add(new AssetFile(pathInAssets + "/" + asset_path));
 		}// for
-		return results;
-	}// list
+	}// constructor
 
-} // AssetDirectory
-
+}// Assets
